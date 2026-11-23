@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Web Shop - Login Test Cases</title>
+<style>
+:root{--navy:#16324f;--blue:#2463a4;--light:#eaf2f8;--gray:#f5f7fa;--text:#263238;--border:#d7e0e8}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#eef2f6;font-size:13.5px;line-height:1.42}.page{max-width:1100px;margin:24px auto;background:#fff;box-shadow:0 3px 16px rgba(22,50,79,.12)}.cover{padding:38px 48px;background:var(--navy);color:#fff;border-bottom:7px solid #d6a735}.cover h1{margin:0 0 8px;font-size:32px}.cover p{margin:4px 0}.content{padding:28px 48px 40px}h2{margin:24px 0 10px;padding-bottom:7px;color:var(--navy);border-bottom:2px solid var(--border);font-size:20px;page-break-after:avoid}h3{margin:16px 0 8px;color:var(--blue);font-size:15px;page-break-after:avoid}p{margin:6px 0 10px}ul,ol{margin:6px 0 10px;padding-left:22px}li{margin:3px 0}table{width:100%;border-collapse:collapse;margin:8px 0 16px;page-break-inside:avoid}th,td{border:1px solid var(--border);padding:7px 8px;text-align:left;vertical-align:top}th{background:var(--light);color:var(--navy)}.meta{display:grid;grid-template-columns:165px 1fr;border:1px solid var(--border);margin-bottom:16px}.meta div{padding:8px 10px;border-bottom:1px solid var(--border)}.meta div:nth-last-child(-n+2){border-bottom:0}.meta div:nth-child(odd){background:var(--gray);font-weight:bold}.callout{background:var(--gray);border-left:4px solid var(--blue);padding:10px 12px;margin:10px 0}.footer{border-top:1px solid var(--border);padding:14px 48px;color:#667780;font-size:11px}.priority-p1{color:#8a2d0b;font-weight:bold}.priority-p2{color:#735200;font-weight:bold}@media print{body{background:#fff;font-size:10.5pt}.page{max-width:none;margin:0;box-shadow:none}.cover{min-height:0;padding:32px 40px}.content{padding:22px 40px 32px}.footer{padding:12px 40px}@page{margin:10mm}}
+</style>
+</head>
+<body><main class="page">
+<header class="cover"><h1>Demo Web Shop - Login Test Cases</h1><p>Test Document: Positive and Negative Login Scenarios</p><p>Document Status: Prepared from the supplied requirement</p></header>
+<div class="content">
+<div class="meta"><div>Application</div><div>Demo Web Shop</div><div>Feature</div><div>User Login</div><div>Test Type</div><div>Functional UI Testing</div><div>Version</div><div>1.0</div></div>
+
+<h2>1. Document Information</h2>
+<p>This document validates the ability of a user to open the Demo Web Shop login page, enter credentials, log in, and verify the logged-in user name or email address.</p>
+
+<h2>2. Test Data</h2>
+<table><thead><tr><th>Data Item</th><th>Value</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>Valid registered email</td><td>Use the approved test email supplied for execution</td><td>Positive login testing</td></tr>
+<tr><td>Valid registered password</td><td>Use the approved test password supplied for execution</td><td>Positive login testing</td></tr>
+<tr><td>Invalid email</td><td>invalid.user@example.test</td><td>Negative login testing</td></tr>
+<tr><td>Invalid password</td><td>InvalidPassword!123</td><td>Negative login testing</td></tr>
+<tr><td>Malformed email</td><td>invalid-email</td><td>Negative validation testing</td></tr>
+</tbody></table>
+<div class="callout"><strong>Security note:</strong> Live credentials are not printed in this document. Store the supplied credentials only in a secure test-data source and use them solely for authorized testing.</div>
+
+<h2>3. Preconditions</h2>
+<ul>
+<li>The Demo Web Shop application URL is accessible.</li>
+<li>The login page is available.</li>
+<li>A valid registered test account is available for positive testing.</li>
+<li>The test environment is in a stable state.</li>
+</ul>
+
+<h2>4. Test Case Summary</h2>
+<table><thead><tr><th>Type</th><th>Count</th><th>Coverage</th></tr></thead><tbody>
+<tr><td>Positive</td><td>3</td><td>Valid login and identity verification</td></tr>
+<tr><td>Negative</td><td>8</td><td>Invalid, empty, malformed, and boundary login inputs</td></tr>
+<tr><td>Total</td><td>11</td><td>Login journey</td></tr>
+</tbody></table>
+
+<h2>5. Positive Test Cases</h2>
+<table>
+<thead><tr><th>TC ID</th><th>Test Scenario</th><th>Priority</th><th>Preconditions / Test Data</th><th>Test Steps</th><th>Expected Result</th></tr></thead>
+<tbody>
+<tr><td>TC_LOGIN_POS_001</td><td>Successful login using valid registered email and password</td><td class="priority-p1">P1</td><td>Login page is open.<br>Use the approved valid email and password.</td><td>1. Enter the valid registered email.<br>2. Enter the valid registered password.<br>3. Click the Login button.</td><td>The user is authenticated and navigated to the logged-in state. The logged-in user name or email is displayed correctly.</td></tr>
+<tr><td>TC_LOGIN_POS_002</td><td>Verify logged-in identity after successful login</td><td class="priority-p1">P1</td><td>Successful login is completed using the valid test account.</td><td>1. Observe the page header or account section after login.<br>2. Compare the displayed identity with the valid account email.</td><td>The header or account section displays the correct registered user name or email for the account.</td></tr>
+<tr><td>TC_LOGIN_POS_003</td><td>Verify session remains active after login-page navigation</td><td class="priority-p2">P2</td><td>User is logged in with valid credentials.</td><td>1. Navigate to another available page in Demo Web Shop.<br>2. Return to the main or account page.</td><td>The user remains logged in and the correct logged-in identity continues to be displayed.</td></tr>
+</tbody></table>
+
+<h2>6. Negative Test Cases</h2>
+<table>
+<thead><tr><th>TC ID</th><th>Test Scenario</th><th>Priority</th><th>Preconditions / Test Data</th><th>Test Steps</th><th>Expected Result</th></tr></thead>
+<tbody>
+<tr><td>TC_LOGIN_NEG_001</td><td>Login with invalid email and valid password</td><td class="priority-p1">P1</td><td>Login page is open.<br>Use invalid email and any valid test password.</td><td>1. Enter the invalid email.<br>2. Enter a valid test password.<br>3. Click Login.</td><td>Login is rejected. A clear authentication or validation message is shown and the user remains logged out.</td></tr>
+<tr><td>TC_LOGIN_NEG_002</td><td>Login with valid email and invalid password</td><td class="priority-p1">P1</td><td>Login page is open.<br>Use the valid test email and invalid password.</td><td>1. Enter the valid test email.<br>2. Enter an invalid password.<br>3. Click Login.</td><td>Login is rejected. A clear authentication or validation message is shown and the user remains logged out.</td></tr>
+<tr><td>TC_LOGIN_NEG_003</td><td>Login with both credentials invalid</td><td class="priority-p1">P1</td><td>Login page is open.<br>Use invalid email and invalid password.</td><td>1. Enter an invalid email.<br>2. Enter an invalid password.<br>3. Click Login.</td><td>Login is rejected and the user does not enter the logged-in state. The application displays a clear error.</td></tr>
+<tr><td>TC_LOGIN_NEG_004</td><td>Login with empty email and password</td><td class="priority-p1">P1</td><td>Login page is open.</td><td>1. Leave email empty.<br>2. Leave password empty.<br>3. Click Login.</td><td>Login is not performed. Required-field validation or an appropriate error message is displayed.</td></tr>
+<tr><td>TC_LOGIN_NEG_005</td><td>Login with empty email only</td><td class="priority-p2">P2</td><td>Login page is open.</td><td>1. Leave email empty.<br>2. Enter a valid test password.<br>3. Click Login.</td><td>The login is rejected and email validation or a required-field message is shown.</td></tr>
+<tr><td>TC_LOGIN_NEG_006</td><td>Login with empty password only</td><td class="priority-p2">P2</td><td>Login page is open.</td><td>1. Enter the valid test email.<br>2. Leave password empty.<br>3. Click Login.</td><td>The login is rejected and password validation or a required-field message is shown.</td></tr>
+<tr><td>TC_LOGIN_NEG_007</td><td>Login with malformed email format</td><td class="priority-p2">P2</td><td>Login page is open.<br>Use invalid-email as email data.</td><td>1. Enter invalid-email.<br>2. Enter a password.<br>3. Click Login.</td><td>The application validates the email format and rejects login without navigating to the logged-in state.</td></tr>
+<tr><td>TC_LOGIN_NEG_008</td><td>Verify password is handled as a secret</td><td class="priority-p1">P1</td><td>Login page is open.</td><td>1. Enter the valid test password.<br>2. Observe the password field and page state.</td><td>The password is masked or otherwise protected in the password field and is not displayed as plain text.</td></tr>
+</tbody></table>
+
+<h2>7. Execution and Exit Notes</h2>
+<ul>
+<li>Mark a test case Pass only when the actual result matches the expected result.</li>
+<li>Record the browser, environment, test date, actual result, and evidence for each executed case.</li>
+<li>Do not include passwords or personal account details in defect evidence.</li>
+<li>Exit when all P1 cases pass or any unresolved critical issue is documented and approved.</li>
+</ul>
+
+<div class="callout"><strong>Requirement principle:</strong> This test suite is derived only from the supplied login requirement and common field-validation behaviors needed to execute the scenario. Exact application-specific messages should be compared with the available implementation and requirements.</div>
+</div>
+<footer class="footer">Demo Web Shop - Login Test Cases | Positive and Negative Scenarios</footer>
+</main></body></html>
