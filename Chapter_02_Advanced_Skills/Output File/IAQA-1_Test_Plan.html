@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Plan – IAQA-1: Verify user is able to login</title>
+<style>
+:root{--navy:#16324f;--blue:#2463a4;--light:#eaf2f8;--gray:#f5f7fa;--text:#263238;--border:#d7e0e8;--amber:#8a4b08}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#eef2f6;font-size:13.5px;line-height:1.42}.page{max-width:1100px;margin:24px auto;background:#fff;box-shadow:0 3px 16px rgba(22,50,79,.12)}.cover{display:flex;justify-content:space-between;align-items:center;padding:34px 48px;background:var(--navy);color:#fff;border-bottom:7px solid #d6a735}.cover h1{margin:0 0 8px;font-size:30px}.cover p{margin:4px 0}.cover img{max-width:150px;max-height:75px;object-fit:contain;background:#fff;padding:8px;border-radius:4px}.content{padding:28px 48px 40px}h2{margin:24px 0 10px;padding-bottom:7px;color:var(--navy);border-bottom:2px solid var(--border);font-size:20px;page-break-after:avoid}h3{margin:16px 0 8px;color:var(--blue);font-size:15px;page-break-after:avoid}p{margin:6px 0 10px}ul,ol{margin:6px 0 10px;padding-left:22px}li{margin:3px 0}table{width:100%;border-collapse:collapse;margin:8px 0 16px;page-break-inside:avoid}th,td{border:1px solid var(--border);padding:7px 8px;text-align:left;vertical-align:top}th{background:var(--light);color:var(--navy)}.meta{display:grid;grid-template-columns:165px 1fr;border:1px solid var(--border);margin-bottom:16px}.meta div{padding:8px 10px;border-bottom:1px solid var(--border)}.meta div:nth-last-child(-n+2){border-bottom:0}.meta div:nth-child(odd){background:var(--gray);font-weight:bold}.callout{background:var(--gray);border-left:4px solid var(--blue);padding:10px 12px;margin:10px 0}.review{background:#fff7df;border-left:5px solid #d6a735;padding:14px;margin-top:18px}.review h2{border:0;margin-top:0}.footer{border-top:1px solid var(--border);padding:14px 48px;color:#667780;font-size:11px}.p0{font-weight:bold;color:#9c2b16}.p1{font-weight:bold;color:#735200}.p2{font-weight:bold;color:#31556f}@media print{body{background:#fff;font-size:10.5pt}.page{max-width:none;margin:0;box-shadow:none}.cover{padding:26px 40px}.content{padding:22px 40px 32px}.footer{padding:12px 40px}@page{margin:10mm}}
+</style>
+</head>
+<body><main class="page">
+<header class="cover">
+<div><h1>Test Plan – IAQA-1</h1><p>Verify user is able to login</p><p><strong>Status:</strong> DRAFT – pending human review</p></div>
+<img src="../Misc/image-1.png" alt="Company logo">
+</header>
+<div class="content">
+<div class="meta">
+<div>Jira Key</div><div>IAQA-1</div>
+<div>Issue Type</div><div>Bug</div>
+<div>Priority</div><div>High</div>
+<div>Application</div><div>Demo Web Shop</div>
+<div>Application URL</div><div>https://demowebshop.tricentis.com/</div>
+<div>Fix Version / Sprint</div><div>Not specified</div>
+<div>Components</div><div>Not specified</div>
+</div>
+
+<h2>1. Scope &amp; Objectives</h2>
+<h3>Objective</h3>
+<p>To determine whether a user can log in to Demo Web Shop using valid credentials and whether the login journey rejects invalid or incomplete authentication attempts consistently.</p>
+<h3>In Scope</h3>
+<ul>
+<li>Login page access from the supplied Demo Web Shop URL.</li>
+<li>Login using valid credentials.</li>
+<li>Invalid email and password combinations.</li>
+<li>Empty and malformed login fields.</li>
+<li>Verification of the logged-in identity after successful authentication.</li>
+<li>Positive, negative, and boundary-oriented login scenarios based on the supplied ticket description.</li>
+</ul>
+<h3>Out of Scope</h3>
+<ul>
+<li>Registration and checkout journeys, except as needed to reproduce login navigation.</li>
+<li>Forgot password, social login, MFA, SSO, and account-locking behavior unless implementation evidence confirms these features.</li>
+<li>Performance, load, penetration testing, or security exploitation beyond basic login validation.</li>
+<li>Test-case creation and automation until human approval.</li>
+</ul>
+
+<h2>2. Gaps &amp; Questions for the Author</h2>
+<table>
+<thead><tr><th>Area</th><th>Finding</th><th>Question to Author</th></tr></thead>
+<tbody>
+<tr><td>User goal</td><td>⚠️ Ambiguous</td><td>The description states login with credentials, but the intended post-login page or dashboard state is not specified. What page must a successful login show?</td></tr>
+<tr><td>Acceptance criteria</td><td>❌ Missing</td><td>Are formal acceptance criteria available as Jira fields or attachments? Please provide observable pass/fail criteria.</td></tr>
+<tr><td>Successful credential identification</td><td>⚠️ Ambiguous</td><td>Which account or test credentials should be used, and should the verified identity be the displayed name or email address?</td></tr>
+<tr><td>Error behavior</td><td>❌ Missing</td><td>What exact messages or UI states are required for invalid email, invalid password, and empty fields?</td></tr>
+<tr><td>Account and password rules</td><td>❌ Missing</td><td>What email format and password requirements apply in this environment?</td></tr>
+<tr><td>Data and environment</td><td>❌ Missing</td><td>Which QA or pre-production URL should be used, and is test account provisioning self-service or managed?</td></tr>
+<tr><td>Permissions and roles</td><td>❌ Missing</td><td>Are any account roles or permissions relevant to login behavior?</td></tr>
+<tr><td>Session behavior</td><td>❌ Missing</td><td>Is Remember Me required? What session timeout and logout behavior are expected?</td></tr>
+<tr><td>Non-functional requirements</td><td>❌ Missing</td><td>Are page-load, responsiveness, accessibility, security, or localization targets defined?</td></tr>
+<tr><td>Dependencies and integrations</td><td>❌ Missing</td><td>Are external authentication or identity services involved?</td></tr>
+<tr><td>Regression surface</td><td>❌ Missing</td><td>Which existing features must be regression-tested after login changes?</td></tr>
+<tr><td>Attachments / designs</td><td>✅ No attachments returned</td><td>Are there screenshots, mockups, or API specifications that define the expected UI or response?</td></tr>
+<tr><td>Fix version / sprint</td><td>❌ Missing</td><td>Which fix version or sprint contains this issue?</td></tr>
+</tbody>
+</table>
+
+<h2>3. Test Scenarios</h2>
+<table>
+<thead><tr><th>ID</th><th>Priority</th><th>Type</th><th>Scenario</th><th>Maps to</th></tr></thead>
+<tbody>
+<tr><td>TS-1</td><td class="p0">P0</td><td>Positive</td><td>Open the supplied application URL and navigate to Login.</td><td>Ticket description: access Demo Web Shop login.</td></tr>
+<tr><td>TS-2</td><td class="p0">P0</td><td>Positive</td><td>Log in using a valid registered email and password and verify that the logged-in state and identity are displayed.</td><td>Ticket summary and description.</td></tr>
+<tr><td>TS-3</td><td class="p0">P0</td><td>Negative</td><td>Attempt login with an invalid email and a password that is otherwise valid.</td><td>Gap: undefined negative/error path.</td></tr>
+<tr><td>TS-4</td><td class="p0">P0</td><td>Negative</td><td>Attempt login with a valid email and an invalid password.</td><td>Gap: undefined negative/error path.</td></tr>
+<tr><td>TS-5</td><td class="p0">P0</td><td>Negative</td><td>Submit Login with both email and password empty.</td><td>Gap: undefined empty-state behavior.</td></tr>
+<tr><td>TS-6</td><td class="p1">P1</td><td>Negative</td><td>Submit Login with email empty and password populated.</td><td>Gap: undefined required-field behavior.</td></tr>
+<tr><td>TS-7</td><td class="p1">P1</td><td>Negative</td><td>Submit Login with email populated and password empty.</td><td>Gap: undefined required-field behavior.</td></tr>
+<tr><td>TS-8</td><td class="p1">P1</td><td>Boundary / negative</td><td>Submit a malformed email format and verify the application rejects it or returns the required validation feedback.</td><td>Gap: undefined email format rules.</td></tr>
+<tr><td>TS-9</td><td class="p1">P1</td><td>Negative / security</td><td>Verify that entered password text is masked and not exposed in the page or basic UI evidence.</td><td>Gap: undefined security requirement.</td></tr>
+<tr><td>TS-10</td><td class="p1">P1</td><td>Positive / session</td><td>After successful login, navigate to another available page and verify that identity/session continuity is consistent with the implemented behavior.</td><td>Gap: undefined session behavior.</td></tr>
+<tr><td>TS-11</td><td class="p2">P2</td><td>Compatibility</td><td>Repeat successful and rejected-login checks in representative desktop and mobile browser viewports.</td><td>Gap: undefined responsive/browser matrix.</td></tr>
+<tr><td>TS-12</td><td class="p2">P2</td><td>Exploratory</td><td>Check keyboard navigation, field focus, and clear actionable feedback on the login page.</td><td>Gap: undefined accessibility expectations.</td></tr>
+</tbody></table>
+
+<h2>4. Test Data &amp; Environment</h2>
+<h3>Test Data</h3>
+<ul>
+<li>A valid registered Demo Web Shop test account must be confirmed.</li>
+<li>A confirmed invalid email, invalid password, malformed email, and empty-field dataset must be used.</li>
+<li>No real personal or production credentials should be stored in Jira, reports, or screenshots.</li>
+</ul>
+<h3>Environment</h3>
+<ul>
+<li>Application URL: https://demowebshop.tricentis.com/</li>
+<li>Target environment: not identified; confirmation is required before execution.</li>
+<li>Feature flags: not identified.</li>
+</ul>
+<h3>Roles / Permissions</h3>
+<ul><li>No role or permission model was supplied for this ticket.</li></ul>
+
+<h2>5. Risks &amp; Assumptions</h2>
+<h3>Assumptions Made</h3>
+<ul>
+<li>The supplied description is the complete functional requirement available.</li>
+<li>Successful login requires navigation to a logged-in state and display of the user's identity.</li>
+<li>Demo Web Shop is publicly reachable for testing at the supplied URL.</li>
+<li>Valid test credentials exist and can be provided by the tester or author.</li>
+</ul>
+<h3>Risks</h3>
+<ul>
+<li>No formal acceptance criteria may lead to conflicting interpretations.</li>
+<li>Missing test account and environment details may block execution.</li>
+<li>Missing exact error messages may prevent strict UI assertions.</li>
+<li>Missing session and security requirements limit non-functional coverage.</li>
+<li>Unknown browser matrix may leave compatibility gaps.</li>
+</ul>
+
+<h2>6. Entry / Exit Criteria</h2>
+<h3>Entry Criteria</h3>
+<ul>
+<li>Human review is complete and open blocking questions are resolved or documented.</li>
+<li>The application URL is accessible.</li>
+<li>A valid test account is available.</li>
+<li>Required test environment and browser matrix are confirmed.</li>
+</ul>
+<h3>Exit Criteria</h3>
+<ul>
+<li>Planned P0 scenarios are executed and pass.</li>
+<li>Planned P1 scenarios are executed and pass, or approved exceptions are recorded.</li>
+<li>No unresolved critical login defect remains.</li>
+<li>Test results and defects are reported to the Jira ticket.</li>
+</ul>
+
+<h2>7. Timelines</h2>
+<p>Not specified in the Jira ticket. Dates must be agreed by the project team after human review.</p>
+<h2>8. Resource Management</h2>
+<p>Functional tester resources can be aligned from the Vingify functional testing team. The ticket does not specify the required resource count or owner.</p>
+
+<section class="review">
+<h2>--- HUMAN REVIEW GATE ---</h2>
+<p><strong>Assumptions made:</strong> Successful login produces a logged-in state and identity display; the supplied public URL is the test entry point; valid test credentials can be provisioned.</p>
+<p><strong>Could not confirm:</strong> Acceptance criteria, exact success/error behavior, test account, environment, session rules, roles, browser matrix, accessibility targets, dependencies, fix version, and regression scope.</p>
+<p><strong>Open questions blocking sign-off:</strong> All high-risk items in the Gaps &amp; Questions section, especially acceptance criteria, exact UI behavior, test data, environment, and success/identity expectations.</p>
+<p><strong>Decision required:</strong> Please approve, reject, or edit this draft before test cases or automation are created.</p>
+</section>
+</div>
+<footer class="footer">IAQA-1 Test Plan | Vingify functional testing | Draft – not approved</footer>
+</main></body></html>
