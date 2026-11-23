@@ -1,0 +1,3 @@
+# Sensitive local environment configuration
+.env
+**/.env
